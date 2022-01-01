@@ -7,12 +7,15 @@ const removeFromArray = function (inputArray, itemToBeRemoved) {
   for (i = 1; i < args.length; i++) {
     // console.log(args[i]);
     let removePosition = inputArray.indexOf(args[i]);
-    let firstPartNewArray = inputArray.slice(0, removePosition);
-    let secondPartNewArray = inputArray.slice(removePosition + 1);
-    let newArray = firstPartNewArray.concat(secondPartNewArray);
+    // check if indexOf returns value or not;
+    if (removePosition !== -1) {
+      let firstPartNewArray = inputArray.slice(0, removePosition);
+      let secondPartNewArray = inputArray.slice(removePosition + 1);
+      let newArray = firstPartNewArray.concat(secondPartNewArray);
+      inputArray = newArray;
+    }
     // update inputArray to be newArray so it can feed it in for the next cycle
     // and remove for more than one argument
-    inputArray = newArray;
     // console.log(inputArray);
   }
 
@@ -21,6 +24,7 @@ const removeFromArray = function (inputArray, itemToBeRemoved) {
 
 // console.log(removeFromArray(["Hello", "There", "When", "is"], "There"));
 // console.log(removeFromArray([1, 2, 3, 4], 1, 3));
+// console.log(removeFromArray([1, 2, 3, 4], 1, "taco"));
 
 // Do not edit below this line
 module.exports = removeFromArray;
